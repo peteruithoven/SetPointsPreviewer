@@ -29,10 +29,10 @@
 	font-size: 50px;
 	color: #bbb;
 }
-#dropzone-x:after {
+#dropzone-x.show:after {
 	content: "X";
 }
-#dropzone-y:after{ 
+#dropzone-y.show:after{ 
 	content: "Y";
 }
 
