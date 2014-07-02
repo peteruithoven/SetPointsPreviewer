@@ -8,18 +8,33 @@
 		<meta name="viewport" content="width=device-width">
 		<link rel="stylesheet" href="css/libs/normalize.css" />
 		<link rel="stylesheet" href="css/style.css" />
+		
 	</head>
 	<body>
 		<div id="preview"></div>
 		<p id="description"></p>
 		<div id="dropzone-x" class="dropzone show"></div>
 		<div id="dropzone-y" class="dropzone show"></div>
-		<!--<div id="help"></div>-->
+		<div id="help">
+			<h3>Drop your set point files here</h3>
+			<p>Syntax example:</p>
+			<pre class="prettyprint">
+[
+&nbsp;&nbsp;{"A":"101","T":"0","P":"100"},
+&nbsp;&nbsp;{"A":"101","T":"2000","P":"-100"},
+&nbsp;&nbsp;{"A":"101","T":"4000","P":"100"}
+]</pre>
+			<ul>
+				<li><strong>A: </strong>Address</li>
+				<li><strong>T: </strong>time (0 to 65000 milliseconds)</li>
+				<li><strong>P: </strong>Point (-32000 to +32000 steps)</li>
+			</ul>
+		</div>
 		
+		<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 		<script type="text/javascript" src="js/libs/jquery-1.11.0.min.js"></script>
 		<script type="text/javascript" src="js/libs/svg.min.js"></script>
 		<script type="text/javascript" src="js/DropZone.js"></script>
-		<script type="text/javascript" src="js/Form.js"></script>
 		<script type="text/javascript" src="js/Code.js"></script>
 		<script type="text/javascript" src="js/Preview.js"></script>
 		<script type="text/javascript" src="js/Description.js"></script>

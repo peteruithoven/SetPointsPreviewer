@@ -11,7 +11,7 @@ preview.init(document.getElementById('preview'));
 dropZoneX.init(document.getElementById('dropzone-x'));
 dropZoneY.init(document.getElementById('dropzone-y'));
 dropZoneX.onload = function(content) {
-	//help.className = "hide";
+	help.className = "hide";
 	console.log("  codeX: ",content);
 	code.concat(content,"x");
 	//console.log("  >codeX: ",codeX.lines);
@@ -20,7 +20,7 @@ dropZoneX.onload = function(content) {
 	//description.setContent(simpleCode);
 };
 dropZoneY.onload = function(content) {
-	//help.className = "hide";
+	help.className = "hide";
 	console.log("  codeY: ",content);
 	code.concat(content,"y");
 	//console.log("  >codeX: ",codeY.lines);
