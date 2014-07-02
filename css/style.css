@@ -56,6 +56,9 @@
 #preview svg {
 	/*border: 1px solid #ccc;*/
 	overflow:visible;
+	position: absolute;
+	top: 50%;
+	left: 50%;
 }
 #preview line {
 	stroke: #9cff46;
@@ -63,6 +66,18 @@
 #preview .fade {
 	opacity: 0.1;
 }
+#preview .axis-x {
+	border-top: 1px solid #ddd;
+	position: absolute;
+	top: 50%;
+	width: 100%;
+}
+#preview .axis-y {
+	border-right: 1px solid #ddd;
+	width: 50%;
+	height: 100%;
+}
+
 #help {
 	width: 30em;
 	text-align: left;
