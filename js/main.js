@@ -35,20 +35,16 @@ dropZoneY.onload = function(content) {
 	var width = document.width;
 	var perc = mouseX/document.body.clientWidth;
 	setCurrentLine(Math.round(simpleCode.length*perc));
-}
+}*/
 
 document.onkeydown = function(event) {
 	var multiplier = event.shiftKey? 10 : 1;
 	switch(event.keyCode) {
 		case 37: //left
-			setCurrentLine(currentLine-1*multiplier);
-			break;
-		case 39: //right
-			setCurrentLine(currentLine+1*multiplier);
-			break;
 		case 38: //up
 			setCurrentLine(currentLine-1*multiplier);
 			break;
+		case 39: //right
 		case 40: //down
 			setCurrentLine(currentLine+1*multiplier);
 			break;
@@ -56,11 +52,11 @@ document.onkeydown = function(event) {
 }
 
 function setCurrentLine(line) {
-	if(line > simpleCode.length-1) line = simpleCode.length-1;
+	if(line > code.length-1) line = code.length-1;
 	if(line < 0) line = 0;
 	if(currentLine === line) return;
 	currentLine = line;
-	//console.log("  currentLine: ",currentLine);
+	console.log("  currentLine: ",currentLine);
 	preview.setStep(currentLine);
-	description.setLine(currentLine);
-}*/
+	//description.setLine(currentLine);
+}

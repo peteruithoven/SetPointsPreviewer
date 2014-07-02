@@ -14,7 +14,7 @@ function Preview() {
 	this.init = function(element) {
 		_element = element;
 		if (SVG.supported) {
-			_svg = SVG(_element);
+			_svg = SVG(_element).size("50%","50%");
 		} else {
 			alert('SVG not supported');
 		}
@@ -25,8 +25,8 @@ function Preview() {
 		_element.className = "show";
 		draw();
 	};
-	/*this.setStep = function(step) {
-		if(step > _simpleCode.length-1) step = _simpleCode.length-1;
+	this.setStep = function(step) {
+		if(step > _code.length-1) step = _code.length-1;
 		if(step < 0) step = 0;
 		if(step === _currentStep) return;
 		_currentStep = step;
@@ -35,7 +35,7 @@ function Preview() {
 			var step = _steps[i];
 			if(step === undefined) continue;
 			step.setAttribute('opacity',((i > _currentStep)? 0.1 : 1));
-			*//*var classes = step.getAttribute('class');
+			/*var classes = step.getAttribute('class');
 			var fade = i > _currentStep;
 			var faded = classes.indexOf("fade") !== -1;
 			if(i > _currentStep) {
@@ -43,9 +43,9 @@ function Preview() {
 			} else {
 				if(faded) classes = classes.replace(" fade","");
 			}
-			step.setAttribute('class',classes);*//*
+			step.setAttribute('class',classes);*/
 		}
-	}*/
+	}
 	
 	function draw() {
 		
