@@ -55,17 +55,17 @@ function Preview() {
 		var py = 0;
 		for (var i in _code.lines) {
 			var line = _code.lines[i];
-			console.log("  line: ",line);
+			//console.log("  line: ",line);
 			
 			var setPointX = line[_self.machineX];
 			var setPointY = line[_self.machineY];
-			console.log("    setPointX: ",setPointX);
-			console.log("    setPointY: ",setPointY);
+			//console.log("    setPointX: ",setPointX);
+			//console.log("    setPointY: ",setPointY);
 			
 			var deltaX = (setPointX)? Number.parseInt(setPointX.P) : 0;
 			var deltaY = (setPointY)? Number.parseInt(setPointY.P) : 0;
-			console.log("    deltaX: ",deltaX);
-			console.log("    deltaY: ",deltaY);
+			//console.log("    deltaX: ",deltaX);
+			//console.log("    deltaY: ",deltaY);
 			
 			var x = px + deltaX;
 			var y = py + deltaY;
