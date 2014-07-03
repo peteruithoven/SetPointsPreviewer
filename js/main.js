@@ -16,8 +16,7 @@ dropZoneX.onload = function(content) {
 	code.concat(content,"x");
 	//console.log("  >codeX: ",codeX.lines);
 	preview.machineX = code.getMachine("x");
-	preview.setContent(code);
-	//description.setContent(simpleCode);
+	update();
 };
 dropZoneY.onload = function(content) {
 	help.className = "hide";
@@ -25,9 +24,13 @@ dropZoneY.onload = function(content) {
 	code.concat(content,"y");
 	//console.log("  >codeX: ",codeY.lines);
 	preview.machineY = code.getMachine("y");
-	preview.setContent(code);
-	//description.setContent(simpleCode);
+	update();
 };
+function update() {
+	preview.setContent(code);
+	setCurrentLine(code.length-1);
+	//description.setContent(code);
+}
 //description.init(document.getElementById('description'));
 
 /*document.onmousemove = function(event) {
