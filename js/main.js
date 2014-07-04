@@ -33,12 +33,23 @@ function update() {
 }
 //description.init(document.getElementById('description'));
 
-/*document.onmousemove = function(event) {
+document.onmousemove = function(event) {
 	var mouseX = (event.pageX !== undefined)? event.pageX : event.clientX;
 	var width = document.width;
 	var perc = mouseX/document.body.clientWidth;
-	setCurrentLine(Math.round(simpleCode.length*perc));
-}*/
+	
+	// we take 101% of timeLength so that it's possible to reach the last setPoint
+	var currentTime = code.timeLength*1.01*perc;
+	//console.log("perc: ",perc,"> currentTime: ",Math.round(currentTime),"/",code.timeLength);
+	
+	var line = -1;
+	for (var time in code.lines) {
+		if(time >= currentTime) break;
+		else line++;
+	}
+	//console.log("  line: ",line,"/",code.length);
+	setCurrentLine(line);
+}
 
 document.onkeydown = function(event) {
 	var multiplier = event.shiftKey? 10 : 1;

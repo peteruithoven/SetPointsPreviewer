@@ -3,6 +3,7 @@ function Code() {
 	this.machines = {};
 	this.lines = [];
 	this.length = 0;
+	this.timeLength = 0;
 	
 	var _setPointSets = {}; // array of raw setpoints per machine
 	var _self = this;
@@ -56,6 +57,7 @@ function Code() {
 		for (var timeIndex in _self.lines) {
 			var line = _self.lines[timeIndex];
 			console.log("  "+timeIndex+": line: ",line);
+			_self.timeLength = timeIndex;
 		}
 	}
 	function sortObj(obj){
