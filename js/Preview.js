@@ -7,9 +7,9 @@ function Preview() {
 	var _svg;
 	var _code;
 	var _currentStep = 0;
-	var _steps = [];
-	var _self = this;
-	var _scale = 1;
+	var _steps       = [];
+	var _self        = this;
+	var _scale       = 1;
 
 	this.init = function(element) {
 		_element = element;
@@ -49,10 +49,10 @@ function Preview() {
 	
 	function draw() {
 		
-		_steps = [];
+		_steps  = [];
 		_svg.clear();
-		var px = 0;
-		var py = 0;
+		var px  = 0;
+		var py  = 0;
 		for (var i in _code.lines) {
 			var line = _code.lines[i];
 			//console.log("  line: ",line);

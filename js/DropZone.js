@@ -3,7 +3,7 @@ function DropZone() {
 	this.onload;
 	var _dropped = false;
 	var _element;
-	var _self = this;
+	var _self    = this;
 
 	this.init = function(element) {
 		_element = element;

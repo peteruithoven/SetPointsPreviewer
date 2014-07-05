@@ -1,12 +1,12 @@
 function Code() {
 	
-	this.machines = {};
-	this.lines = [];
-	this.length = 0;
-	this.timeLength = 0;
+	this.machines      = {};
+	this.lines         = [];
+	this.length        = 0;
+	this.timeLength    = 0;
 	
-	var _setPointSets = {}; // array of raw setpoints per machine
-	var _self = this;
+	var _setPointSets  = {}; // array of raw setpoints per machine
+	var _self          = this;
 
 	this.concat = function(content,machineLabel) {
 		console.log("concat");

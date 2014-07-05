@@ -1,9 +1,9 @@
-var dropZoneX = new DropZone();
-var dropZoneY = new DropZone();
-var code = new Code();
-var currentLine = 0;
-var preview = new Preview();
-var help = document.getElementById('help')
+var dropZoneX     = new DropZone();
+var dropZoneY     = new DropZone();
+var code          = new Code();
+var currentLine   = 0;
+var preview       = new Preview();
+var help          = document.getElementById('help')
 //var description = new Description();
 
 preview.init(document.getElementById('preview'));
