@@ -47,7 +47,6 @@ function Preview() {
 	
 	function update() {
 		console.log("Preview:update");
-
 		var lineAttr = {
 			x1: function(d,i){ return (i==0)? 0 : _code.lines[i-1].x},
 			y1: function(d,i){ return (i==0)? 0 : _code.lines[i-1].y},
@@ -58,6 +57,8 @@ function Preview() {
 			.attr(lineAttr);
 		lines.enter().append("line")
 			.attr(lineAttr);
+		
+		_steps = _svg.selectAll("line")[0];
 	}
 	function getScale() {
 		return _scale;

@@ -3,7 +3,7 @@ function Code() {
 	this.machines      = {};
 	this.lines         = [];
 	this.length        = 0;
-	this.timeLength    = 0;
+	this.duration    = 0;
 	
 	var _setPointSets  = {}; // array of raw setpoints per machine
 	var _self          = this;
@@ -77,15 +77,14 @@ function Code() {
 				}
 				line[machineLabel] = absolutePos[machineLabel];
 			}
+			_self.duration = line.time; // store duration
 		}
 		
 		console.log("lines:");
 		for (var i in _self.lines) {
 			var line = _self.lines[i];
 			console.log("  ",line);
-			_self.timeLength = line.time; // store timeLength
 		}
-
 		_self.length = _self.lines.length;
 	}
 	function sortOnTime(a, b) {

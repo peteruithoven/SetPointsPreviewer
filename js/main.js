@@ -7,7 +7,7 @@ var help          = document.getElementById('help')
 //var description = new Description();
 
 preview.init(document.getElementById('preview'));
-//preview.setContent(simpleCode);
+preview.setContent(code);
 dropZoneX.init(document.getElementById('dropzone-x'));
 dropZoneY.init(document.getElementById('dropzone-y'));
 dropZoneX.onload = function(content) {
@@ -38,17 +38,17 @@ document.onmousemove = function(event) {
 	var width = document.width;
 	var perc = mouseX/document.body.clientWidth;
 	
-	// we take 101% of timeLength so that it's possible to reach the last setPoint
-	var currentTime = code.timeLength*1.01*perc;
-	//console.log("perc: ",perc,"> currentTime: ",Math.round(currentTime),"/",code.timeLength);
+	// we take 105% of duration so that it's possible to reach the last setPoint
+	var currentTime = code.duration*1.05*perc;
 	
-	var line = -1;
-	for (var time in code.lines) {
-		if(time >= currentTime) break;
-		else line++;
+	var curentLineIndex = -1;
+	for (i in code.lines) {
+		var line = code.lines[i];
+		if(line.time >= currentTime) break;
+		curentLineIndex++;
 	}
-	//console.log("  line: ",line,"/",code.length);
-	setCurrentLine(line);
+	//console.log("  line: ",curentLineIndex,"/",code.length);
+	setCurrentLine(curentLineIndex);
 }
 
 document.onkeydown = function(event) {
@@ -70,7 +70,7 @@ function setCurrentLine(line) {
 	if(line < 0) line = 0;
 	if(currentLine === line) return;
 	currentLine = line;
-	console.log("  currentLine: ",currentLine);
+	//console.log("  currentLine: ",currentLine);
 	preview.setStep(currentLine);
 	//description.setLine(currentLine);
 }
