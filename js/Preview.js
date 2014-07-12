@@ -13,17 +13,15 @@ function Preview() {
 
 	this.init = function(element) {
 		_element = element;
-		if (SVG.supported) {
-			_svg = SVG(_element).size("50%","50%");
-		} else {
-			alert('SVG not supported');
-		}
+		_svg = d3.select("#preview svg");
+		console.log("  _svg: ",_svg);
 	};
 	this.setContent = function(code) {
+		console.log("Preview:setContent");
 		_code = code;
 		if(_code.length === 0) return;
 		_element.className = "show";
-		draw();
+		update();
 	};
 	this.setStep = function(step) {
 		if(step > _code.length-1) step = _code.length-1;
@@ -47,40 +45,25 @@ function Preview() {
 		}
 	}
 	
-	function draw() {
-		
-		_steps  = [];
-		_svg.clear();
-		var px  = 0;
-		var py  = 0;
-		for (var i in _code.lines) {
-			var line = _code.lines[i];
-			//console.log("  line: ",line);
-			
-			var setPointX = line[_self.machineX];
-			var setPointY = line[_self.machineY];
-			//console.log("    setPointX: ",setPointX);
-			//console.log("    setPointY: ",setPointY);
-			
-			var deltaX = (setPointX)? Number.parseInt(setPointX.P) : 0;
-			var deltaY = (setPointY)? Number.parseInt(setPointY.P) : 0;
-			//console.log("    deltaX: ",deltaX);
-			//console.log("    deltaY: ",deltaY);
-			
-			var x = px + deltaX;
-			var y = py + deltaY;
-			var line = _svg.line(px,py,x,y);
-			var step = line.node;
-			_steps.push(step);
-			px = x;
-			py = y;
+	function update() {
+		console.log("Preview:update");
+
+		var lineAttr = {
+			x1: function(d,i){ return (i==0)? 0 : _code.lines[i-1].x},
+			y1: function(d,i){ return (i==0)? 0 : _code.lines[i-1].y},
+			x2: function(d){ return d.x},
+			y2: function(d){ return d.y}
 		}
+		var lines = _svg.selectAll("line").data(_code.lines)
+			.attr(lineAttr);
+		lines.enter().append("line")
+			.attr(lineAttr);
 	}
 	function getScale() {
 		return _scale;
 	}
 	function setScale(scale) {
 		_scale = scale;
-		draw();
+		update();
 	}
 }
