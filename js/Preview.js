@@ -5,6 +5,9 @@ function Preview() {
 	
 	var _element;
 	var _svg;
+	var _container;
+	var _linesContainer;
+	
 	var _code;
 	var _currentStep = 0;
 	var _steps       = [];
@@ -14,10 +17,21 @@ function Preview() {
 	this.init = function(element) {
 		_element = element;
 		_svg = d3.select("#preview svg");
-		console.log("  _svg: ",_svg);
+		_container = _svg.select("#container");
+		_linesContainer = _container.select("#lines_container");
+		
+		var zoom = d3.behavior.zoom()
+    	.scaleExtent([0.1, 4])
+    	.on("zoom", move);
+		_svg.call(zoom);
+		function move() {
+			var t = d3.event.translate;
+			var s = d3.event.scale;
+			_container.attr("transform", "translate(" + t[0] + "," + t[1] + ") scale(" + s + ")");
+		}
+		
 	};
 	this.setContent = function(code) {
-		console.log("Preview:setContent");
 		_code = code;
 		if(_code.length === 0) return;
 		_element.className = "show";
@@ -46,19 +60,19 @@ function Preview() {
 	}
 	
 	function update() {
-		console.log("Preview:update");
 		var lineAttr = {
 			x1: function(d,i){ return (i==0)? 0 : _code.lines[i-1].x},
 			y1: function(d,i){ return (i==0)? 0 : _code.lines[i-1].y},
 			x2: function(d){ return d.x},
 			y2: function(d){ return d.y}
+//			"vector-effect":"non-scaling-stroke"
 		}
-		var lines = _svg.selectAll("line").data(_code.lines)
+		var lines = _linesContainer.selectAll("line").data(_code.lines)
 			.attr(lineAttr);
 		lines.enter().append("line")
 			.attr(lineAttr);
 		
-		_steps = _svg.selectAll("line")[0];
+		_steps = lines[0];
 	}
 	function getScale() {
 		return _scale;

@@ -1,8 +1,9 @@
 .dropzone {
-	border: 2px solid rgba(255,255,255,0);
 	margin: 10px;
+	display: none;
 }
 .dropzone.show {
+	display:block;
 	border: 2px dashed #BBB;
 	border-radius: 5px;
 }
@@ -48,36 +49,24 @@
 	right: 0;
 	bottom: 0;
 	display: none;
-	/*margin: 10px;*/
 }
 #preview.show {
 	display: block;
 }
 #preview svg {
-	/*border: 1px solid #ccc;*/
 	overflow:visible;
-	position: absolute;
-	top: 50%;
-	left: 50%;
 }
 #preview line {
 	stroke: #9cff46;
+	vector-effect: non-scaling-stroke;
 }
 #preview .fade {
 	opacity: 0.1;
 }
-#preview .axis-x {
-	border-top: 1px solid #ddd;
-	position: absolute;
-	top: 50%;
-	width: 100%;
+#preview .axis-x, #preview .axis-y {
+	stroke: #ddd;
+	fill: none;
 }
-#preview .axis-y {
-	border-right: 1px solid #ddd;
-	width: 50%;
-	height: 100%;
-}
-
 #help {
 	width: 30em;
 	text-align: left;
