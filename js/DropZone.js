@@ -7,14 +7,12 @@ function DropZone() {
 
 	this.init = function(element) {
 		_element = element;
-		_element.addEventListener('dragover', onFileDragOver, false);
-		_element.addEventListener('dragleave', onFileDragLeave, false);
 		_element.addEventListener('drop', onFileDrop, false);
+		document.addEventListener('dragover', onFileDragDocumentOver, false);
+		document.addEventListener('dragleave', onFileDragDocumentLeave, false);
+		document.addEventListener('drop', onFileDragDocumentDrop, false);
 	};
 	function onFileDrop(event) {
-		event.stopPropagation();
-		event.preventDefault();
-
 		var files = event.dataTransfer.files; // FileList object.
 		for (var i = 0, f; f = files[i]; i++) {
 			var reader = new FileReader();
@@ -27,9 +25,16 @@ function DropZone() {
 			reader.readAsText(f);
 		}
 		_dropped = true;
-		_element.className = _element.className.replace(" show","");
 	}
-	function onFileDragOver(event) {
+	function onFileDragDocumentDrop(event) {
+		event.stopPropagation();
+		event.preventDefault();
+		
+		if(_dropped) {
+			_element.className = _element.className.replace(" show","");
+		}
+	}
+	function onFileDragDocumentOver(event) {
 		if(_element.className.indexOf("show") === -1){
 			_element.className += " show";
 		}
@@ -37,7 +42,7 @@ function DropZone() {
 		event.preventDefault();
 		event.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
 	}
-	function onFileDragLeave(event) {
+	function onFileDragDocumentLeave(event) {
 		if(_dropped) {
 			_element.className = _element.className.replace(" show","");
 		}

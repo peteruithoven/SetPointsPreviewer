@@ -11,14 +11,20 @@
 		
 	</head>
 	<body>
-		<div id="preview">
-			<div class="axis-x"></div>
-			<div class="axis-y"></div>
+		
+		<div id="preview" class="show">
+			<svg width="100%" height="100%">
+				<g id="container">
+					<svg id="lines_container" x="50%" y="50%"></svg>
+					<line x1="0" x2="100%" y1="50%" y2="50%" class="axis-x"></line>
+					<line x1="50%" x2="50%"  y1="0" y2="100%" class="axis-y"></line>
+				</g>
+			</svg>
 		</div>
-		<p id="description"></p>
 		<div id="dropzone-x" class="dropzone show"></div>
 		<div id="dropzone-y" class="dropzone show"></div>
-		<div id="help">
+		<p id="description"></p>
+		<div id="help"  class="hide">
 			<h3>Drop your set point files here</h3>
 			<p>Syntax example:</p>
 			<pre class="prettyprint">
@@ -36,7 +42,7 @@
 		
 		<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 		<script type="text/javascript" src="js/libs/jquery-1.11.0.min.js"></script>
-		<script type="text/javascript" src="js/libs/svg.min.js"></script>
+		<script type="text/javascript" src="js/libs/d3.min.js"></script>
 		<script type="text/javascript" src="js/DropZone.js"></script>
 		<script type="text/javascript" src="js/Code.js"></script>
 		<script type="text/javascript" src="js/Preview.js"></script>
